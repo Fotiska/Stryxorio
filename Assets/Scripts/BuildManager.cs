@@ -123,6 +123,8 @@ public class BuildManager : MonoBehaviour
     private bool testClaim(Vector2Int mapPos, int claimSize)
     {
         if (Claiming.getInstance().claimMap[mapPos.x, mapPos.y]) return true;
+
+        if (claimSize == 0) return false;
         
         for (int x = -claimSize - 1; x < claimSize + 1; x++)
         {

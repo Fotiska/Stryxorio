@@ -88,8 +88,9 @@ public class Turret : MonoBehaviour
         inst.transform.position = bulletSpawn.position;
         rigidBodyInst.rotation = rigidBodyTurret.rotation + angle;
         float a = rigidBodyInst.rotation + 180;
-        rigidBodyInst.velocity = new Vector2(Mathf.Sin(-a * Mathf.Deg2Rad), Mathf.Cos(-a * Mathf.Deg2Rad)) * 16;
+        rigidBodyInst.velocity = new Vector2(Mathf.Sin(-a * Mathf.Deg2Rad), Mathf.Cos(-a * Mathf.Deg2Rad)) * 32;
         Destroy(inst, turret.bulletTime);
+        
     }
 
     private void Rotate()

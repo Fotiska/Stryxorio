@@ -68,6 +68,7 @@
      <Compile Include="Assets\Scripts\MapPerlinNoise.cs" />
      <Compile Include="Assets\Scripts\Turret.cs" />
      <Compile Include="Assets\Scripts\BuildManager.cs" />
+     <Compile Include="Assets\Scripts\Bullet.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity 2020.3.21f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
