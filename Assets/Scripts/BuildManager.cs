@@ -37,8 +37,8 @@ public class BuildManager : MonoBehaviour
     public GameObject texture;
     [SerializeField] private GameObject showing;
     public int size;
-    private int newId;
-    private Dictionary<GameObject, int> electroTowers= new Dictionary<GameObject, int>();
+    private static int newId;
+    private static Dictionary<GameObject, int> electroTowers= new Dictionary<GameObject, int>();
 
     public static OneBlock[,] getMap()
     {
@@ -48,11 +48,11 @@ public class BuildManager : MonoBehaviour
     private void Awake()
     {
         mapSize = GameManage.getMapSize();
-        _map = new OneBlock[GameManage.getMapSize().x, GameManage.getMapSize().y];
+        _map = new OneBlock[mapSize.x, mapSize.y];
         _gameManage = FindObjectOfType<GameManage>(); //Get a Script GameManage
     }
 
-    private int getId(GameObject block)
+    public static int getId(GameObject block)
     {
         if (block != null && electroTowers.ContainsKey(block))
         {
@@ -67,14 +67,20 @@ public class BuildManager : MonoBehaviour
     private void Start()
     {
         _camera = Camera.main;
-        _map[mapSize.x / 2 - 1, mapSize.y / 2 - 1].Occupied = true; //Set Occupied In Base
-        _map[mapSize.x / 2 - 1, mapSize.y / 2].Occupied = true; //Set Occupied In Base
-        _map[mapSize.x / 2, mapSize.y / 2 - 1].Occupied = true; //Set Occupied In Base
-        _map[mapSize.x / 2, mapSize.y / 2].Occupied = true; //Set Occupied In Base
+        
+        int x2 = mapSize.x / 2;
+        int x3 = x2 - 1;
+        int y2 = mapSize.y / 2;
+        int y3 = y2 - 1;
+        
+        _map[x3, y3].Occupied = true; //Set Occupied In Base
+        _map[x3, y2].Occupied = true; //Set Occupied In Base
+        _map[x2, y3].Occupied = true; //Set Occupied In Base
+        _map[x2, y2].Occupied = true; //Set Occupied In Base
 
         StartCoroutine(showBlock());
         newId = 0;
-        Claiming.getInstance().claimZone(new Vector2Int(mapSize.x / 2, mapSize.y / 2), 20, true, getId(null));
+        Claiming.getInstance().claimZone(new Vector2Int(x2, y2), 20, true, getId(null));
     }
 
     private IEnumerator showBlock()
@@ -126,15 +132,13 @@ public class BuildManager : MonoBehaviour
 
         if (claimSize == 0) return false;
         
-        for (int x = -claimSize - 1; x < claimSize + 1; x++)
+        for (int x = -claimSize - 1; x <= claimSize + 1; x++)
         {
-            for (int y = -claimSize - 1; y < claimSize + 1; y++)
+            for (int y = -claimSize - 1; y <= claimSize + 1; y++)
             {
-                int x2 = Mathf.Clamp(mapPos.x + x, 0,  mapSize.x);
-                int y2 = Mathf.Clamp(mapPos.y + y, 0, mapSize.y);
-                
-                print(x2 + "/" + y2 + "//" + Claiming.getInstance().claimMap[x2, y2]);
-                
+                int x2 = Mathf.Clamp(mapPos.x + x, 0,  mapSize.x - 1);
+                int y2 = Mathf.Clamp(mapPos.y + y, 0, mapSize.y - 1);
+
                 if (Claiming.getInstance().claimMap[x2, y2]) return true;
             }
         }

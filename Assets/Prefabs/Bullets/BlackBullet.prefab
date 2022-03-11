@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 7416663242527235089}
   - component: {fileID: 890057042087958150}
   - component: {fileID: 7438727887527285202}
+  - component: {fileID: 1433583051870444757}
   m_Layer: 6
   m_Name: BlackBullet
   m_TagString: Untagged
@@ -223,6 +224,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 6
+--- !u!114 &1433583051870444757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2482102461524548017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba685a18a8c513c4fad787b138f9d5d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyEffect: {fileID: 5672407163991985911, guid: 87a8a99eabd48b94abb0fa010792fa58, type: 3}
 --- !u!1 &4983550903428716215
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +344,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7549372179772388774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3537306479112805432}
@@ -385,8 +399,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.0103645325
-        value: 0.10076581
+        time: 0
+        value: 0.17768908
         inSlope: 0
         outSlope: 0
         tangentMode: 0

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -7,6 +6,8 @@ public class Bullet : MonoBehaviour
     
     private void OnDestroy()
     {
-        Destroy(Instantiate(destroyEffect, GameObject.FindWithTag("Effects").transform), 5f);
+        GameObject inst = Instantiate(destroyEffect, GameObject.FindWithTag("Effects").transform);
+        inst.transform.position = transform.position;
+        Destroy(inst, 5f);
     }
 }

@@ -25,7 +25,7 @@ public class UIStats : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.25f);
             gold.text = _gameManage.gold + "/" + _gameManage.maxGold;
             amethyst.text = _gameManage.amethyst + "/" + _gameManage.maxAmethyst;
             health.text = _gameManage.Base.health + "/" + 100;

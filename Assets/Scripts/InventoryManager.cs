@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [Serializable]
-public struct inventoryItem
+public class inventoryItem
 {
     public GameObject prefab;
     public GameManage.Tile allowTile;
     public OneBlock.BlockType type;
     public GameManage.Category category;
     public GameObject texturePrefab;
-    public String description;
-    public String name;
+    public String description; //make
+    public String name; //make
     public GameObject showTexture;
     public int size;
 }
@@ -22,7 +22,7 @@ public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private GameObject itemPrefab;
     [SerializeField] private Transform[] categories;
-    [SerializeField] private List<inventoryItem> items;
+    public List<inventoryItem> items;
     [SerializeField] private GameObject infoImage;
     [SerializeField] private Text infoDesc;
     [SerializeField] private Text gold, amethyst;

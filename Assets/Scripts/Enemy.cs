@@ -22,8 +22,16 @@ public class Enemy : MonoBehaviour
         
         if (blockStats.health <= 0)
         {
+
+            Vector2 pos = other.transform.position;
+            
+            Vector2Int mapPos = new Vector2Int(Mathf.RoundToInt(pos.x - 0.5f), Mathf.RoundToInt(pos.y - 0.5f));
+            
+            Claiming.getInstance().claimZone(mapPos, 6, false, BuildManager.getId(other.gameObject));
+            
             Destroy(other.gameObject);
-            BuildManager.getMap()[Mathf.RoundToInt(other.transform.position.x - 0.5f), Mathf.RoundToInt(other.transform.position.y - 0.5f)].Occupied = false;
+            
+            BuildManager.getMap()[mapPos.x, mapPos.y].Occupied = false;
         }
         
         if (health <= 0 && gameObject) Destroy(gameObject);
