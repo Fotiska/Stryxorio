@@ -1,7 +1,13 @@
 fileFormatVersion: 2
 guid: 68c5fb866d942d642bee1a5f3a412aed
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 4457663794195168306
+    second: Hit
+  - first:
+      213: -5364657433725072944
+    second: Square
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -101,7 +107,49 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Hit
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23c7f156a9dccdd30800000000000000
+      internalID: 4457663794195168306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d98829bc78ec85b0800000000000000
+      internalID: -5364657433725072944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -10,6 +9,7 @@ public struct BlockStats
     public int amethyst;
     public int maxAmethyst;
     public int claimZone;
+    public String color;
 }
 
 public class GameManage : MonoBehaviour
@@ -47,15 +47,15 @@ public class GameManage : MonoBehaviour
     public int blockCount;
     public Stats Base;
     public OneBlock block;
-    public GameObject Square; 
-    public GameObject Shape;
+    private static GameObject Square; 
+    private static GameObject Shape;
 
     public static Vector2Int getMapSize()
     {
         return new Vector2Int(mapSize.x, mapSize.y);
     }
 
-    private BlockStats[] blocks =
+    private static BlockStats[] blocks =
     {
         new BlockStats {gold = 0, maxGold = 0, amethyst = 0, maxAmethyst = 0, claimZone = 0}, //None
         
@@ -68,19 +68,19 @@ public class GameManage : MonoBehaviour
         new BlockStats {gold = 5, maxGold = 0, amethyst = 0, maxAmethyst = 0, claimZone = 0}, //Stone Wall
         new BlockStats {gold = 15, maxGold = 0, amethyst = 0, maxAmethyst = 0, claimZone = 0}, //Iron Wall
         
-        new BlockStats {gold = 175, maxGold = 0, amethyst = 0, maxAmethyst = 0, claimZone = 5} //Electro Tower
+        new BlockStats {gold = 175, maxGold = 0, amethyst = 0, maxAmethyst = 0, claimZone = 5, color = "97dde2"} //Electro Tower
     };
-
-    private IconStat[] icons =
+    
+    private static IconStat[] icons =
     {
         IconStat.None, //None
-
+        
         IconStat.Shape, //White Turret
         IconStat.Shape, //Old Turret
-
+        
         IconStat.None, //Gold Miner
         IconStat.None, //Gold WareHouse
-
+        
         IconStat.None, //Stone Wall
         IconStat.None, //Iron Wall
         
@@ -89,12 +89,12 @@ public class GameManage : MonoBehaviour
         IconStat.Square //Improved Electro Tower Future
     };
 
-    public BlockStats GetBlockStats(OneBlock.BlockType type)
+    public static BlockStats GetBlockStats(OneBlock.BlockType type)
     {
         return blocks[(int)type]; //Return Block Stats
     }
     
-    public GameObject GetIcon(OneBlock.BlockType type)
+    public static GameObject GetIcon(OneBlock.BlockType type)
     {
         GameObject pref = null;
         if (icons[(int) type] == IconStat.Shape) pref = Shape;

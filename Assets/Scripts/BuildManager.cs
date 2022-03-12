@@ -33,9 +33,11 @@ public class BuildManager : MonoBehaviour
     private Camera _camera;
     [SerializeField] public GameManage.Tile allowTile;
     [SerializeField] public OneBlock.BlockType type;
-    private GameManage _gameManage;
     public GameObject texture;
     [SerializeField] private GameObject showing;
+    [SerializeField] private Transform effects;
+    [SerializeField] private GameObject breakEffect;
+    private GameManage gameManage;
     public int size;
     private static int newId;
     private static Dictionary<GameObject, int> electroTowers= new Dictionary<GameObject, int>();
@@ -49,7 +51,7 @@ public class BuildManager : MonoBehaviour
     {
         mapSize = GameManage.getMapSize();
         _map = new OneBlock[mapSize.x, mapSize.y];
-        _gameManage = FindObjectOfType<GameManage>(); //Get a Script GameManage
+        gameManage = FindObjectOfType<GameManage>();
     }
 
     public static int getId(GameObject block)
@@ -109,7 +111,7 @@ public class BuildManager : MonoBehaviour
                     sprite.color = new Color(255, 255, 255, 0.3f);
                 }
 
-                GameObject iconPrefab = _gameManage.GetIcon(type);
+                GameObject iconPrefab = GameManage.GetIcon(type);
 
                 if (iconPrefab != null)
                 {
@@ -168,32 +170,32 @@ public class BuildManager : MonoBehaviour
         OneBlock block = _map[mapPos.x, mapPos.y]; //Get Block
         if (!cameraMan.inventoryOpened)
         {
-            if (Input.GetMouseButton(0) && testClaim(mapPos, _gameManage.GetBlockStats(type).claimZone)) //Place Block
+            if (Input.GetMouseButton(0) && testClaim(mapPos, GameManage.GetBlockStats(type).claimZone)) //Place Block
             {
                 if (prefab == null || block.Occupied) return; //If block occupied return
-                if (_gameManage.tileMap[mapPos.x, mapPos.y] != allowTile && allowTile != GameManage.Tile.All)
+                if (gameManage.tileMap[mapPos.x, mapPos.y] != allowTile && allowTile != GameManage.Tile.All)
                     return; //If tile not allowed for build block return
 
                 block.Type = type;
-                BlockStats blockStats = _gameManage.GetBlockStats(block.Type);
-                if (_gameManage.gold < blockStats.gold || _gameManage.amethyst < blockStats.amethyst)
+                BlockStats blockStats = GameManage.GetBlockStats(block.Type);
+                if (gameManage.gold < blockStats.gold || gameManage.amethyst < blockStats.amethyst)
                 {
                     block.Type = OneBlock.BlockType.None;
                     return; //If not enough gold or amethyst return
                 }
 
-                _gameManage.gold -= blockStats.gold; //Remove gold
-                _gameManage.maxGold += blockStats.maxGold; //Add max gold
+                gameManage.gold -= blockStats.gold; //Remove gold
+                gameManage.maxGold += blockStats.maxGold; //Add max gold
                 
-                _gameManage.amethyst -= blockStats.amethyst; //Remove amethyst
-                _gameManage.maxAmethyst += blockStats.maxAmethyst; //Add max amethyst
+                gameManage.amethyst -= blockStats.amethyst; //Remove amethyst
+                gameManage.maxAmethyst += blockStats.maxAmethyst; //Add max amethyst
 
                 GameObject inst = Instantiate(prefab, trBlocks); //Spawn block
                 block.Occupied = true;
                 inst.transform.localPosition = buildPos;
                 block.Block = inst;
                 block.Type = type;
-                _gameManage.blockCount += 1;
+                gameManage.blockCount += 1;
                 
                 if (blockStats.claimZone != 0)
                 {
@@ -204,13 +206,13 @@ public class BuildManager : MonoBehaviour
             }
             if (Input.GetMouseButton(1) && block.Block) //Remove Block
             {
-                BlockStats blockStats = _gameManage.GetBlockStats(block.Type);
+                BlockStats blockStats = GameManage.GetBlockStats(block.Type);
 
-                _gameManage.maxGold -= blockStats.maxGold;
-                _gameManage.gold += Mathf.RoundToInt(blockStats.gold * 0.4f);
+                gameManage.maxGold -= blockStats.maxGold;
+                gameManage.gold += Mathf.RoundToInt(blockStats.gold * 0.4f);
                 
-                _gameManage.maxAmethyst -= blockStats.maxAmethyst;
-                _gameManage.amethyst += Mathf.RoundToInt(blockStats.amethyst * 0.4f);
+                gameManage.maxAmethyst -= blockStats.maxAmethyst;
+                gameManage.amethyst += Mathf.RoundToInt(blockStats.amethyst * 0.4f);
 
                 if (blockStats.claimZone != 0)
                 {
@@ -220,11 +222,20 @@ public class BuildManager : MonoBehaviour
                 
                 block.Occupied = false;
                 Destroy(block.Block);
-                _gameManage.blockCount -= 1;
+                gameManage.blockCount -= 1;
+
+                if (blockStats.color != null)
+                {
+                    GameObject inst = Instantiate(breakEffect, effects);
+                    ColorUtility.TryParseHtmlString(blockStats.color, out Color color);
+                    
+                    inst.GetComponent<ParticleSystem>().startColor = color;
+                }
+                
             }
 
             _map[mapPos.x, mapPos.y] = block;
-            _gameManage.block = block;
+            gameManage.block = block;
         }
     }
 }
