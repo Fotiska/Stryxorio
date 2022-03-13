@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8326785704939253329}
   - component: {fileID: 1358009642186959120}
   - component: {fileID: 5354560791778989733}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gold WareHouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8326785705952675335}
   - component: {fileID: 8326785705952675334}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

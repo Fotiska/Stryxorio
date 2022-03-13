@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1522805231316675666}
   - component: {fileID: 1522805231316675667}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BaseSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -5922539529781627245, guid: 41f454aa7717ba645806901aaf227250, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 1522805231811970813}
   - component: {fileID: 1522805231811970814}
   - component: {fileID: 1688265982671560700}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: TurretRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: -1161698081752833415, guid: 41f454aa7717ba645806901aaf227250, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 3309900988136200527}
   - component: {fileID: 1522805232178555191}
   - component: {fileID: 6568886859317648595}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Old Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7980934954589776715}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}

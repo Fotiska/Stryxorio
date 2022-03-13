@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,16 +14,25 @@ public class inventoryItem
     public GameManage.Category category;
     public String description;
     public String name;
+    public openScripts openScriptType;
+
+    public int count;
+    public OneBlock.BlockType blockType;
 }
 
+[Serializable]
+public enum openScripts{
+    None,
+    PlaceBlockScript
+}
 
 public class InventoryManager : MonoBehaviour
 {
-    public GameObject itemPrefab; //make
-    public Transform[] categories; //make
-    public List<inventoryItem> items; //dont
-    public GameObject infoImage; //make
-    public Text infoDesc; //make
+    public GameObject itemPrefab;
+    public Transform[] categories;
+    public List<inventoryItem> items;
+    public GameObject infoImage;
+    public Text infoDesc;
     public Text gold, amethyst;
     
     public void Awake()
@@ -35,52 +46,89 @@ public class InventoryManager : MonoBehaviour
                 GameManage.Category.Other => categories[2],
                 _ => null
             };
-
+            
             GameObject itemInst = Instantiate(itemPrefab, _transform);
-            Transform imageInst = itemInst.transform.Find("Image");
-
-            GameObject showingPrefab = getShowingPrefab(item.prefab);
+            Transform opened = itemInst.transform.Find("Opened");
+            Transform imageInst = opened.Find("Image");
+            
+            GameObject showingPrefab = getShowingPrefab(Instantiate(item.prefab, imageInst));
             GameObject texturePrefab = getTexturePrefab(showingPrefab);
             
-            Instantiate(texturePrefab, imageInst);
-            itemInst.transform.Find("Name").Find("NameText").GetComponent<Text>().text = item.name;
-            itemInst.GetComponentInChildren<Button>().onClick.AddListener( delegate { click(item); });
+            opened.Find("Name").Find("NameText").GetComponent<Text>().text = item.name;
+            opened.GetComponentInChildren<Button>().onClick.AddListener( delegate { click(item); });
+
+            if (item.openScriptType != openScripts.None)
+            {
+                switch (item.openScriptType)
+                {
+                    case openScripts.PlaceBlockScript:
+                    {
+                        PlaceBlockScript script = itemInst.AddComponent<PlaceBlockScript>();
+                        
+                        script.count = item.count;
+                        script.type = item.blockType;
+                        
+                        Debug.Log(script.count + "/" + script.type);
+                        script.enable();
+                        break;
+                    }
+                }
+            }
         }
+        gameObject.SetActive(false);
     }
 
-    private GameObject getShowingPrefab(GameObject gameObject)
+    private GameObject getShowingPrefab(GameObject gameObj)
     {
-        foreach (var stats in gameObject.GetComponentsInChildren<Stats>())
+        foreach (var stats in gameObj.GetComponentsInChildren<Stats>())
         {
-            Destroy(stats);
+            DestroyImmediate(stats, true);
         }
         
-        foreach (var collider in gameObject.GetComponentsInChildren<Collider2D>())
+        foreach (var collider in gameObj.GetComponentsInChildren<Collider2D>())
         {
-            Destroy(collider);
+            DestroyImmediate(collider, true);
         }
         
-        foreach (var turret in gameObject.GetComponentsInChildren<Turret>())
+        foreach (var turret in gameObj.GetComponentsInChildren<Turret>())
         {
-            Destroy(turret);
+            DestroyImmediate(turret, true);
         }
         
-        return gameObject;
+        return gameObj;
     }
     
-    private GameObject getTexturePrefab(GameObject gameObject)
+    private GameObject getTexturePrefab(GameObject gameObj)
     {
-        foreach (var sprRenderer in gameObject.GetComponentsInChildren<SpriteRenderer>())
+
+        List<SpriteRenderer> spriteRenderers = gameObj.GetComponentsInChildren<SpriteRenderer>().ToList();
+        
+        gameObj.AddComponent(typeof(RectTransform));
+        
+        foreach (Transform tr in gameObj.transform)
+        {
+            RectTransform rectTr = tr.gameObject.AddComponent(typeof(RectTransform)).GetComponent<RectTransform>();
+            Vector2 sizeDelta = rectTr.sizeDelta;
+
+            sizeDelta.x *= 35;
+            sizeDelta.y *= 35;
+            
+            rectTr.sizeDelta = sizeDelta;
+        }
+        
+        foreach (var sprRenderer in spriteRenderers)
         {
             GameObject obj = sprRenderer.gameObject;
             Image img = obj.gameObject.AddComponent<Image>();
-
-            img.sprite = sprRenderer.sprite;
             
-            Destroy(sprRenderer);
+            img.sprite = sprRenderer.sprite;
+
+            DestroyImmediate(sprRenderer, true);
         }
+
+        gameObj.layer = 0;
         
-        return gameObject;
+        return gameObj;
     }
     
     private void click(inventoryItem item)
@@ -90,6 +138,8 @@ public class InventoryManager : MonoBehaviour
         buildMan.prefab = item.prefab;
         buildMan.allowTile = item.allowTile;
         buildMan.type = item.type;
+        
+        Destroy(buildMan.texture);
         
         foreach (Transform o in infoImage.transform)
         {
@@ -102,16 +152,17 @@ public class InventoryManager : MonoBehaviour
         goldC = bs.gold;
         amethystC = bs.amethyst;
 
-        GameObject showingPrefab = getShowingPrefab(item.prefab);
+        GameObject inst = Instantiate(item.prefab, infoImage.transform);
+        
+        GameObject showingPrefab = getShowingPrefab(inst);
+        GameObject showingCloned = Instantiate(showingPrefab);
+        showingCloned.SetActive(false);
         GameObject texturePrefab = getTexturePrefab(showingPrefab);
         
-        
-        GameObject inst = Instantiate(texturePrefab, infoImage.transform);
         infoDesc.text = item.description;
         gold.text = goldC.ToString();
         amethyst.text = amethystC.ToString();
-        buildMan.texture = showingPrefab;
+        buildMan.texture = showingCloned;
         buildMan.size = GameManage.GetBlockStats(item.type).claimZone;
     }
-    
 }

@@ -106,6 +106,7 @@ public class BuildManager : MonoBehaviour
                 showing.transform.position = new Vector3(buildPos.x, buildPos.y, 2);
             
                 GameObject blockInst = Instantiate(texture, showing.transform);
+                blockInst.SetActive(true);
                 foreach (var sprite in blockInst.GetComponentsInChildren<SpriteRenderer>())
                 {
                     sprite.color = new Color(255, 255, 255, 0.3f);
@@ -228,8 +229,9 @@ public class BuildManager : MonoBehaviour
                 {
                     GameObject inst = Instantiate(breakEffect, effects);
                     ColorUtility.TryParseHtmlString(blockStats.color, out Color color);
-                    
-                    inst.GetComponent<ParticleSystem>().startColor = color;
+
+                    var mainModule = inst.GetComponent<ParticleSystem>().main;
+                    mainModule.startColor = color;
                 }
                 
             }

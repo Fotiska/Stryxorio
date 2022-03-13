@@ -7,6 +7,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float fastSpeed;
     [SerializeField] private GameObject inventory;
+    [SerializeField] private GameObject pause;
     public bool inventoryOpened;
     private Camera _camera;
     private Camera[] cameraChild;
@@ -21,9 +22,9 @@ public class CameraManager : MonoBehaviour
     {
         float fSpeed = speed;
         Transform tr = transform;
-        Vector2 pos = tr.position;
-
-        tr.position = new Vector2(Mathf.Clamp(pos.x, 0, 300), Mathf.Clamp(pos.y, 0, 300));
+        Vector3 pos = tr.position;
+        
+        tr.position = new Vector3(Mathf.Clamp(pos.x, 0, 300), Mathf.Clamp(pos.y, 0, 300), -10);
         
         //Fast
         if (Input.GetKey(KeyCode.LeftShift)) fSpeed = fastSpeed;
@@ -37,7 +38,12 @@ public class CameraManager : MonoBehaviour
         
         //Zoom
         if (!inventoryOpened){
-            if (Input.GetKey(KeyCode.Escape)) Application.Quit();
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                pause.SetActive(!pause.activeSelf);
+                if (pause.activeSelf) Time.timeScale = 0f;
+                else Time.timeScale = 1f;
+            }
             
             float orthographicSize = _camera.orthographicSize;
             orthographicSize -= Input.mouseScrollDelta.y;

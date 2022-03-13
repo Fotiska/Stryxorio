@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -49,6 +50,19 @@ public class GameManage : MonoBehaviour
     public OneBlock block;
     private static GameObject Square; 
     private static GameObject Shape;
+    
+    private static Dictionary<OneBlock.BlockType, int> typeCount = new Dictionary<OneBlock.BlockType, int>();
+
+    public static int getTypeCount(OneBlock.BlockType type)
+    {
+        if (!typeCount.ContainsKey(type))
+        {
+            typeCount.Add(type, 0);
+            return 0;
+        }
+
+        return typeCount[type];
+    }
 
     public static Vector2Int getMapSize()
     {

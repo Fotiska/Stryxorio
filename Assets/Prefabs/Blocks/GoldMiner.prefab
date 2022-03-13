@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8326785704939253342}
   - component: {fileID: 5216430994503167726}
   - component: {fileID: 5354560791778989733}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GoldMiner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8326785705952675335}
   - component: {fileID: 8326785705952675334}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
