@@ -33,9 +33,9 @@ public class Claiming : MonoBehaviour
 
     public void claimZone(Vector2Int centerPos, int zoneScale, bool claim, int id)
     {
-        for (int x = -zoneScale; x < zoneScale; x++)
+        for (int x = -zoneScale - 1; x < zoneScale; x++)
         {
-            for (int y = -zoneScale; y < zoneScale; y++)
+            for (int y = -zoneScale - 1; y < zoneScale; y++)
             {
                 int x2 = Mathf.Clamp(centerPos.x + x + 1, 0, mapSize.x - 1);
                 int y2 = Mathf.Clamp(centerPos.y + y + 1, 0, mapSize.y - 1);
@@ -82,9 +82,9 @@ public class Claiming : MonoBehaviour
     
     public void updateZone(Vector2Int centerPos, int zoneScale)
     {
-        for (int x = -zoneScale; x <= zoneScale; x++)
+        for (int x = -zoneScale - 1; x <= zoneScale; x++)
         {
-            for (int y = -zoneScale; y <= zoneScale; y++)
+            for (int y = -zoneScale - 1; y <= zoneScale; y++)
             {
                 int x2 = Mathf.Clamp(centerPos.x + x + 1, 0, mapSize.x - 1);
                 int y2 = Mathf.Clamp(centerPos.y + y + 1, 0, mapSize.y - 1);

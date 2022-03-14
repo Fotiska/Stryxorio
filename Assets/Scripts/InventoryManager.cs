@@ -69,7 +69,6 @@ public class InventoryManager : MonoBehaviour
                         script.type = item.blockType;
                         
                         Debug.Log(script.count + "/" + script.type);
-                        script.enable();
                         break;
                     }
                 }
@@ -163,6 +162,6 @@ public class InventoryManager : MonoBehaviour
         gold.text = goldC.ToString();
         amethyst.text = amethystC.ToString();
         buildMan.texture = showingCloned;
-        buildMan.size = GameManage.GetBlockStats(item.type).claimZone;
+        buildMan.size = GameManage.GetBlockStats(item.type).size;
     }
 }

@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
         Stats blockStats = other.gameObject.GetComponent<Stats>();
         if (!blockStats) return;
         var hp = blockStats.health;
-        health -= hp;
+        health -= hp * 0.2f;
         if (health > 0) blockStats.health -= health;
         if (health < 0) blockStats.health += health;
 

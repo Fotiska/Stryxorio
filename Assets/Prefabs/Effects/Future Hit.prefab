@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5672407163991985912}
   - component: {fileID: 5672407163991985913}
   - component: {fileID: 5672407163991985910}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Future Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4816,8 +4816,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d60001a9115a67e4ea5394a7ca21fdda, type: 2}
-  - {fileID: 2100000, guid: d60001a9115a67e4ea5394a7ca21fdda, type: 2}
+  - {fileID: 2100000, guid: 512e6b801f6922d4889880cda203905a, type: 2}
+  - {fileID: 2100000, guid: 512e6b801f6922d4889880cda203905a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

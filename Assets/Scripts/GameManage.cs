@@ -10,6 +10,7 @@ public struct BlockStats
     public int amethyst;
     public int maxAmethyst;
     public int claimZone;
+    public int size;
     public String color;
 }
 
@@ -48,8 +49,9 @@ public class GameManage : MonoBehaviour
     public int blockCount;
     public Stats Base;
     public OneBlock block;
-    private static GameObject Square; 
+    private static GameObject Square;
     private static GameObject Shape;
+    [SerializeField] private GameObject Square2, Shape2;
     
     private static Dictionary<OneBlock.BlockType, int> typeCount = new Dictionary<OneBlock.BlockType, int>();
 
@@ -64,6 +66,15 @@ public class GameManage : MonoBehaviour
         return typeCount[type];
     }
 
+    public static void addTypeCount(OneBlock.BlockType type, int count)
+    {
+        if (!typeCount.ContainsKey(type))
+        {
+            typeCount.Add(type, count);
+        }
+        else typeCount[type] += count;
+    }
+
     public static Vector2Int getMapSize()
     {
         return new Vector2Int(mapSize.x, mapSize.y);
@@ -71,18 +82,20 @@ public class GameManage : MonoBehaviour
 
     private static BlockStats[] blocks =
     {
-        new BlockStats {gold = 0, maxGold = 0, amethyst = 0, maxAmethyst = 0, claimZone = 0}, //None
+        new BlockStats {gold = 0, maxGold = 0, amethyst = 0, maxAmethyst = 0}, //None
         
-        new BlockStats {gold = 65, maxGold = 0, amethyst = 0, maxAmethyst = 0, claimZone = 0}, //White Turret
-        new BlockStats {gold = 110, maxGold = 0, amethyst = 0, maxAmethyst = 0, claimZone = 0}, //Old Turret
+        new BlockStats {gold = 65, maxGold = 0, amethyst = 0, maxAmethyst = 0, size = 7}, //White Turret
+        new BlockStats {gold = 110, maxGold = 0, amethyst = 0, maxAmethyst = 0, size = 14}, //Old Turret
         
-        new BlockStats {gold = 65, maxGold = 250, amethyst = 0, maxAmethyst = 0, claimZone = 0}, //Gold Miner
-        new BlockStats {gold = 35, maxGold = 1500, amethyst = 0, maxAmethyst = 0, claimZone = 0}, //Gold WareHouse
+        new BlockStats {gold = 65, maxGold = 250, amethyst = 0, maxAmethyst = 0}, //Gold Miner
+        new BlockStats {gold = 35, maxGold = 1500, amethyst = 0, maxAmethyst = 0}, //Gold WareHouse
         
-        new BlockStats {gold = 5, maxGold = 0, amethyst = 0, maxAmethyst = 0, claimZone = 0}, //Stone Wall
-        new BlockStats {gold = 15, maxGold = 0, amethyst = 0, maxAmethyst = 0, claimZone = 0}, //Iron Wall
+        new BlockStats {gold = 5, maxGold = 0, amethyst = 0, maxAmethyst = 0}, //Stone Wall
+        new BlockStats {gold = 15, maxGold = 0, amethyst = 0, maxAmethyst = 0}, //Iron Wall
         
-        new BlockStats {gold = 175, maxGold = 0, amethyst = 0, maxAmethyst = 0, claimZone = 5, color = "97dde2"} //Electro Tower
+        new BlockStats {gold = 175, maxGold = 0, amethyst = 0, maxAmethyst = 0, size = 5, claimZone = 5, color = "97dde2"}, //Electro Tower
+        
+        new BlockStats {gold = 320, maxGold = 0, amethyst = 0, maxAmethyst = 0, size = 5} //Water Turret
     };
     
     private static IconStat[] icons =
@@ -119,6 +132,8 @@ public class GameManage : MonoBehaviour
     
     private void Awake()
     {
+        Square = Square2;
+        Shape = Shape2;
         instance = this;
         Base = GameObject.FindWithTag("base").GetComponent<Stats>(); //Get a Base
     }

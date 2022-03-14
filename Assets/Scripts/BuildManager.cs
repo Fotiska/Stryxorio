@@ -15,7 +15,8 @@ public struct OneBlock
         GoldWareHouse,
         StoneWall,
         IronWall,
-        ElectroTower
+        ElectroTower,
+        WaterTurret
     }
 
     public bool Occupied;
@@ -197,6 +198,7 @@ public class BuildManager : MonoBehaviour
                 block.Block = inst;
                 block.Type = type;
                 gameManage.blockCount += 1;
+                GameManage.addTypeCount(type, 1);
                 
                 if (blockStats.claimZone != 0)
                 {
@@ -224,14 +226,18 @@ public class BuildManager : MonoBehaviour
                 block.Occupied = false;
                 Destroy(block.Block);
                 gameManage.blockCount -= 1;
+                GameManage.addTypeCount(type, -1);
 
                 if (blockStats.color != null)
                 {
                     GameObject inst = Instantiate(breakEffect, effects);
                     ColorUtility.TryParseHtmlString(blockStats.color, out Color color);
 
+                    inst.transform.position = new Vector3(mapPos.x + 0.5f, mapPos.y + 0.5f, 2);
                     var mainModule = inst.GetComponent<ParticleSystem>().main;
                     mainModule.startColor = color;
+                    
+                    Destroy(inst, 3f);
                 }
                 
             }
