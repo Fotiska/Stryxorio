@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4544938325172688803}
   - component: {fileID: 3091069223739636472}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,10 +230,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2482102461524548017}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba685a18a8c513c4fad787b138f9d5d7, type: 3}
+  m_Script: {fileID: 11500000, guid: d15c3a05743e28749b8ca741c4700d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyEffect: {fileID: 5672407163991985911, guid: d53eb82509b6ef34aa094a4d7dac2b05, type: 3}
+  health: 0
 --- !u!114 &7438727887527285202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,10 +243,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2482102461524548017}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eaf07d9402558c4fa23f60f1cca72bf, type: 3}
+  m_Script: {fileID: 11500000, guid: b5f33b7fa41fee74ebd82420dba3e69e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0.26
+  destroyEffect: {fileID: 5672407163991985911, guid: d53eb82509b6ef34aa094a4d7dac2b05, type: 3}
 --- !u!1 &4983550903428716215
 GameObject:
   m_ObjectHideFlags: 0

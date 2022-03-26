@@ -92,10 +92,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2482102461524548017}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eaf07d9402558c4fa23f60f1cca72bf, type: 3}
+  m_Script: {fileID: 11500000, guid: d15c3a05743e28749b8ca741c4700d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 6
+  health: 0
 --- !u!114 &1433583051870444757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2482102461524548017}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba685a18a8c513c4fad787b138f9d5d7, type: 3}
+  m_Script: {fileID: 11500000, guid: b5f33b7fa41fee74ebd82420dba3e69e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   destroyEffect: {fileID: 5672407163991985911, guid: 87a8a99eabd48b94abb0fa010792fa58, type: 3}
@@ -201,7 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4556472242917567364}
   - component: {fileID: 5909455821150495905}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

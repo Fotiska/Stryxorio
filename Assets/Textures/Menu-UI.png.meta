@@ -44,6 +44,12 @@ TextureImporter:
   - first:
       213: 2240313614345394369
     second: Line
+  - first:
+      213: 6346196908058037889
+    second: Laboratory
+  - first:
+      213: -6875684830435480162
+    second: Add Button
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -275,8 +281,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 38
-        y: 20
-        width: 27
+        y: 10
+        width: 33
         height: 9
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -296,8 +302,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 38
-        y: 30
-        width: 23
+        y: 20
+        width: 33
         height: 9
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -317,8 +323,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 38
-        y: 10
-        width: 27
+        y: 30
+        width: 33
         height: 9
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -426,7 +432,7 @@ TextureImporter:
         width: 9
         height: 1
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -434,6 +440,48 @@ TextureImporter:
       bones: []
       spriteID: 1c85780dc51371f10800000000000000
       internalID: 2240313614345394369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratory
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 30
+        width: 37
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18e4b7bd678321850800000000000000
+      internalID: 6346196908058037889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Add Button
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 0
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9de95e5319a490a0800000000000000
+      internalID: -6875684830435480162
       vertices: []
       indices: 
       edges: []

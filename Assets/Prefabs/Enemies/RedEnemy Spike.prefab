@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6395613991209866151}
   - component: {fileID: 672790471385637571}
   - component: {fileID: 7362620126516924306}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: RedEnemy Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startHealth: 4
   health: 4
-  speed: 2.5
+  speed: 2
 --- !u!1 &8666414744520710423
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8485624261123041995}
   - component: {fileID: 6334874894357336364}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: RedEnemy Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}

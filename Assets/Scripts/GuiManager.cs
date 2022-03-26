@@ -12,7 +12,7 @@ public class GuiManager : MonoBehaviour
 
     private void Awake()
     {
-        gameManage = GameManage.instance; //Get a Script GameManage
+        gameManage = FindObjectOfType<GameManage>(); //Get a Script GameManage
         StartCoroutine(DebugMenu()); //Start Coroutine
     }
 
@@ -26,9 +26,10 @@ public class GuiManager : MonoBehaviour
             enemyCountText.text = "EnemyCount: " + gameManage.enemyCount; //Change Enemy Count Text
             baseHealthText.text = "Base Health: " + gameManage.Base.health; //Change Base Health Text
             blockHealthText.text = "Block Health: ???"; //Change Block Health Text
-            
-            if (gameManage.block.Block == null) continue;
-            Stats blockStats = gameManage.block.Block.GetComponent<Stats>();
+
+            GameObject block = gameManage.block.Block;
+            if (block == null) continue;
+            Stats blockStats = block.GetComponent<Stats>();
             blockHealthText.text = "Block Health: " + blockStats.health; //Change Block Health Text
         }
     }

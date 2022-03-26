@@ -38,7 +38,7 @@ public class CameraManager : MonoBehaviour
         
         //Zoom
         if (!inventoryOpened){
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) && pause != null)
             {
                 pause.SetActive(!pause.activeSelf);
                 if (pause.activeSelf) Time.timeScale = 0f;
@@ -55,7 +55,7 @@ public class CameraManager : MonoBehaviour
         }
         
         //Open Inventory    
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && inventory != null)
         {
             inventory.SetActive(!inventory.activeSelf);
             inventoryOpened = inventory.activeSelf;

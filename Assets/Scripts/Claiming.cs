@@ -14,7 +14,7 @@ public class Claiming : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        mapSize = GameManage.getMapSize();
+        mapSize = CONSTANTS.getMapSize();
         claimMap = new bool[mapSize.x, mapSize.y];
         for (int x = 0; x <= mapSize.x; x++)
         {
@@ -42,37 +42,32 @@ public class Claiming : MonoBehaviour
                 Vector2Int mapPos = new Vector2Int(x2, y2);
                 bool containsMap = mapClaimed.ContainsKey(mapPos);
                 
+                if (!containsMap) continue;
                 if (claim)
                 {
-                    if (containsMap)
-                    {
-                        mapClaimed[mapPos].Add(id);
-                        claimMap[x2, y2] = true;
-                    }
+                    mapClaimed[mapPos].Add(id);
+                    claimMap[x2, y2] = true;
                 }
                 else
                 {
                     bool containsId = mapClaimed[mapPos].Contains(id);
 
-                    if (containsId && containsMap)
+                    if (!containsId) continue;
+                    if (mapClaimed[mapPos].Count == 1)
                     {
-                        if (mapClaimed[mapPos].Count == 1)
-                        {
-                            claimMap[x2, y2] = false;
-                        }
-
-                        if (!claimMap[x2, y2])
-                        {
-                            OneBlock block = BuildManager.getMap()[x2, y2];
-                            block.Occupied = false;
-                            block.Type = OneBlock.BlockType.None;
-                            Destroy(block.Block);
-                        }
-
-                        mapClaimed[mapPos].Remove(id);
-
+                        claimMap[x2, y2] = false;
                     }
-                    
+
+                    if (!claimMap[x2, y2])
+                    {
+                        OneBlock block = BuildManager.getMap()[x2, y2];
+                        block.Occupied = false;
+                        block.Type = "None";
+                        Destroy(block.Block);
+                    }
+                        
+                    mapClaimed[mapPos].Remove(id);
+
                 }
             }
         }

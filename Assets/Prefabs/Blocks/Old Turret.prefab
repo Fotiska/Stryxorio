@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1522805231316675666}
   - component: {fileID: 1522805231316675667}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BaseSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1522805231811970813}
   - component: {fileID: 1522805231811970814}
-  - component: {fileID: 1688265982671560700}
   m_Layer: 0
   m_Name: TurretRange
   m_TagString: Untagged
@@ -166,27 +165,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &1688265982671560700
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1522805231811970812}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1522805232178555190
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,9 +174,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1522805232178555192}
-  - component: {fileID: 3309900988136200527}
   - component: {fileID: 1522805232178555191}
   - component: {fileID: 6568886859317648595}
+  - component: {fileID: -3859152569535663796}
+  - component: {fileID: -5708093337470689462}
   m_Layer: 0
   m_Name: Old Turret
   m_TagString: Untagged
@@ -223,7 +202,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &3309900988136200527
+--- !u!114 &1522805232178555191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522805232178555190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d15c3a05743e28749b8ca741c4700d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 35
+--- !u!114 &6568886859317648595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522805232178555190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cd583234b0869c4c984f75e959ff176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTesting: 0
+  testPos: {x: 3.47, y: 0, z: 0}
+  turret:
+    maxRange: 0
+    bulletTime: 0
+    speed: 0
+    damage: 0
+    shootType: 0
+    maxSpread: 0
+    bulletsInShoot: 0
+    spread: 0
+  rigidBodyTurret: {fileID: -5708093337470689462}
+  bulletSpawn: {fileID: 7980934954589776715}
+  bulletPrefab: {fileID: 2482102461524548017, guid: 1ee0e14eff6f10149ad135f1d373f4b6, type: 3}
+--- !u!61 &-3859152569535663796
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,7 +251,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -249,43 +267,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1522805232178555191
-MonoBehaviour:
+--- !u!50 &-5708093337470689462
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522805232178555190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a0ab48fc6851e2478aeaa63a926da60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turret:
-    maxRange: 14
-    bulletTime: 8
-    speed: 1.5
-    damage: 6
-    shootType: 0
-    maxSpread: 0
-    bulletsInShoot: 1
-    spread: 0
-  rigidBodyTurret: {fileID: 1688265982671560700}
-  bulletSpawn: {fileID: 7980934954589776715}
-  bulletPrefab: {fileID: 2482102461524548017, guid: 1ee0e14eff6f10149ad135f1d373f4b6, type: 3}
---- !u!114 &6568886859317648595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1522805232178555190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eaf07d9402558c4fa23f60f1cca72bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 7
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2474853805051548338
 GameObject:
   m_ObjectHideFlags: 0

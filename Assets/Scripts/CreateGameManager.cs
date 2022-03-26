@@ -7,19 +7,14 @@ using Vector2 = UnityEngine.Vector2;
 public class CreateGameManager : MonoBehaviour
 {
 
-    private Vector2Int mapSize;
+    private Vector2Int mapSize = CONSTANTS.getMapSize();
     [SerializeField] private float zoom;
     [SerializeField] private Image image;
     [SerializeField] private float balance;
     [SerializeField] private Slider slider;
     [SerializeField] private InputField seedField;
     private String seed;
-
-    private void Awake()
-    {
-        mapSize = GameManage.getMapSize();
-    }
-
+    
     public void resetBalance()
     {
         slider.value = 2.15f;
@@ -43,7 +38,7 @@ public class CreateGameManager : MonoBehaviour
 
     public void updateMap()
     {
-        seed = seedField.text;
+        seed =  seedField.text;
         balance = slider.value;
 
         Int32.TryParse(seed, out var seed2); //Try Parse String To Int

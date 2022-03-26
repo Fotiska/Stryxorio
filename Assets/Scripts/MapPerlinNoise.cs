@@ -10,13 +10,13 @@ public class MapPerlinNoise : MonoBehaviour
     [SerializeField] private float balance;
     [SerializeField] private Vector2Int tileSize;
     [SerializeField] private string seed;
-    private GameManage.Tile[,] _tileMap;
+    private CONSTANTS.Tile[,] _tileMap;
     private GameManage _gameManage;
 
     private void Awake()
     {
-        mapSize = GameManage.getMapSize();
-        _tileMap = new GameManage.Tile[mapSize.x, mapSize.y];
+        mapSize = CONSTANTS.getMapSize();
+        _tileMap = new CONSTANTS.Tile[mapSize.x, mapSize.y];
         _gameManage = FindObjectOfType<GameManage>();
         GenerateMap();
     }
@@ -53,19 +53,19 @@ public class MapPerlinNoise : MonoBehaviour
                         //Save Pixel Color
                         map.SetPixel(thx, thy, tileTextures[Mathf.RoundToInt(perlinNoise)].GetPixel(tx, ty));
                         //Save Tile Type
-                        GameManage.Tile tile;
+                        CONSTANTS.Tile tile;
                         switch (Mathf.RoundToInt(perlinNoise))
                         {
                             case 0:
-                                tile = GameManage.Tile.Gold;
+                                tile = CONSTANTS.Tile.Gold;
                                 break;
 
                             case 1:
-                                tile = GameManage.Tile.Basic;
+                                tile = CONSTANTS.Tile.Basic;
                                 break;
 
                             default:
-                                tile = GameManage.Tile.Amethyst;
+                                tile = CONSTANTS.Tile.Amethyst;
                                 break;
                         }
 
@@ -78,7 +78,7 @@ public class MapPerlinNoise : MonoBehaviour
 
         map.filterMode = FilterMode.Point; //Switch FilterMode To Point(For Pixels)
         map.Apply(); //Apply Changes
-        _gameManage.tileMap = _tileMap;
+        CONSTANTS.tileMap = _tileMap;
         
         //Create Sprite
         var spr = Sprite.Create(map, new Rect(0, 0, mapSize.x * tileSize.x, mapSize.y * tileSize.y), new Vector2(0, 0));

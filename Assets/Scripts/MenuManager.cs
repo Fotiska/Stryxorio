@@ -9,10 +9,20 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private Slider slider;
-    
+
+    public void Start()
+    {
+        EventManager.death += death;
+    }
+
     public void openURL(String URL)
     {
         Application.OpenURL(URL);
+    }
+
+    private void death()
+    {
+        StartCoroutine(LoadAsynchronously(0));
     }
 
     public void LoadScene(int scene)

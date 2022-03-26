@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637799537592968086
-    m_Hash: 4063596159
+      ticks: 637833838754231174
+    m_Hash: 785646413
   m_LockFileStatus:
     m_FilePath: C:/Users/Fotis/Projects/StryxorioProject/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637799537593088002
-    m_Hash: 4105171002
+      ticks: 637833838754951242
+    m_Hash: 986096182
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -83,6 +83,7 @@ m_PackageAssets:
         - 3.2.14
         - 3.2.15
         - 3.2.16
+        - 3.2.17
         - 4.0.0
         - 4.0.1
         - 4.1.0
@@ -106,6 +107,7 @@ m_PackageAssets:
         - 5.0.9
         - 5.0.10
         - 5.1.0
+        - 5.1.1
         - 6.0.0-pre.1
         - 6.0.0-pre.2
         - 6.0.1
@@ -119,8 +121,10 @@ m_PackageAssets:
         - 7.0.1
         - 7.0.2
         - 7.0.3
+        - 7.0.4
         - 8.0.0-pre.3
         - 8.0.0-pre.4
+        - 8.0.0
         compatible:
         - 5.0.8
         - 5.0.9
@@ -299,6 +303,7 @@ m_PackageAssets:
         - 2.1.8
         - 2.1.9
         - 2.1.10
+        - 2.1.11
         - 3.0.0
         - 3.1.1
         - 3.1.3
@@ -326,8 +331,10 @@ m_PackageAssets:
         - 6.0.0
         - 6.0.1
         - 6.0.2
+        - 6.0.3
         - 7.0.0-pre.3
         - 7.0.0-pre.4
+        - 7.0.0
         compatible:
         - 4.1.1
         - 4.1.2
@@ -523,8 +530,10 @@ m_PackageAssets:
         - 7.0.0
         - 7.0.2
         - 7.0.3
+        - 7.0.4
         - 8.0.0-pre.4
         - 8.0.0-pre.5
+        - 8.0.0
         compatible:
         - 5.1.5
         - 5.1.6
@@ -692,11 +701,15 @@ m_PackageAssets:
         - 1.14.7
         - 1.14.9
         - 1.14.12
+        - 1.14.13
+        - 1.14.15
         - 1.15.1
         - 1.15.4
         - 1.15.7
         - 1.15.9
         - 1.15.12
+        - 1.15.13
+        - 1.15.15
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -714,11 +727,15 @@ m_PackageAssets:
         - 1.14.7
         - 1.14.9
         - 1.14.12
+        - 1.14.13
+        - 1.14.15
         - 1.15.1
         - 1.15.4
         - 1.15.7
         - 1.15.9
         - 1.15.12
+        - 1.15.13
+        - 1.15.15
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -1014,6 +1031,7 @@ m_PackageAssets:
         - 1.2.2
         - 1.2.3
         - 1.2.4
+        - 1.2.5
         compatible:
         - 1.0.2
         - 1.0.3
@@ -1027,7 +1045,8 @@ m_PackageAssets:
         - 1.2.2
         - 1.2.3
         - 1.2.4
-        verified: 1.2.4
+        - 1.2.5
+        verified: 1.2.5
       dependencies: []
       resolvedDependencies: []
       keywords: []
@@ -1107,6 +1126,7 @@ m_PackageAssets:
         - 3.1.0
         - 3.1.1
         - 3.2.0
+        - 3.2.1
         compatible:
         - 2.3.0
         - 3.0.1
@@ -1114,6 +1134,7 @@ m_PackageAssets:
         - 3.1.0
         - 3.1.1
         - 3.2.0
+        - 3.2.1
         verified: 3.1.1
       dependencies:
       - name: com.unity.modules.physics
@@ -1141,6 +1162,270 @@ m_PackageAssets:
         type: git
         url: git+https://github.com/Unity-Technologies/Graphics.git
         revision: 075b452f2c4bf910a168632b3cedbd6835477ddd
+        path: 
+    - packageId: com.unity.remote-config@1.4.0
+      testable: 0
+      isDirectDependency: 1
+      version: 1.4.0
+      source: 1
+      resolvedPath: C:\Users\Fotis\Projects\StryxorioProject\Library\PackageCache\com.unity.remote-config@1.4.0
+      assetPath: Packages/com.unity.remote-config
+      name: com.unity.remote-config
+      displayName: Remote Config
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: "Remote Config is a cloud service that lets you tune and customize
+        your app over the air without requiring an update to your game.  You can
+        use rules to enable or disable features, change the difficulty of your game
+        or run special events to target specific audiences.  Rules control when updates
+        are applied and to whom, while Unity manages delivery of your game content
+        with minimal performance impact. \n\nRemote Config can be configured via
+        the editor or through our public API\u2019s.  Functionality includes: \n-
+        Release new features without deploying code:\n   - Feature flagging\n   -
+        Staged Rollouts\n   - Kill switch functionality\n   - Start & End Date\n  
+        - Enable & disable rules\n- Personalized real-time segmentation with custom
+        attributes\n   - Custom conditions for applying setting variants\n   - Device,
+        user, game and other arbitrary attributes supporting\n- Reporting\n   - Tracing
+        ID for decorating analytics events"
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 0.3.0-preview.4
+        - 0.3.1-preview.2
+        - 0.3.2-preview
+        - 1.0.0-preview
+        - 1.0.4-preview.2
+        - 1.0.5-preview
+        - 1.0.6-preview
+        - 1.0.6
+        - 1.0.7-preview
+        - 1.0.8-preview
+        - 1.0.8-preview.1
+        - 1.0.8
+        - 1.0.9-preview
+        - 1.0.9-preview.1
+        - 1.0.9
+        - 1.0.10-preview.1
+        - 1.1.0-preview
+        - 1.1.0-preview.1
+        - 1.1.0-preview.2
+        - 1.1.0-preview.3
+        - 1.1.0-preview.4
+        - 1.2.0-preview
+        - 1.2.0-preview.1
+        - 1.2.0-preview.2
+        - 1.2.0-preview.3
+        - 1.2.0-preview.4
+        - 1.2.0-preview.5
+        - 1.2.1-preview
+        - 1.2.1
+        - 1.2.2-preview.1
+        - 1.2.2
+        - 1.2.3-preview.1
+        - 1.2.3-preview.2
+        - 1.2.3
+        - 1.2.4-preview.2
+        - 1.2.4-preview.3
+        - 1.2.4-preview.4
+        - 1.3.0-preview.1
+        - 1.3.0-preview.2
+        - 1.3.1-preview.1
+        - 1.3.1-preview.2
+        - 1.3.1-preview.3
+        - 1.3.1-preview.4
+        - 1.3.2-preview.1
+        - 1.3.2-preview.2
+        - 1.3.2-preview.3
+        - 1.3.2-preview.4
+        - 1.3.2-preview.5
+        - 1.3.2-preview.6
+        - 1.3.2-preview.7
+        - 1.3.2-preview.8
+        - 1.3.2-preview.9
+        - 1.3.2-preview.10
+        - 1.4.0-preview.1
+        - 1.4.0-preview.2
+        - 1.4.0-preview.3
+        - 1.4.0-preview.4
+        - 1.4.0-preview.5
+        - 1.4.0-preview.6
+        - 1.4.0-preview.7
+        - 1.4.0
+        - 2.0.0-preview.2
+        - 2.0.0
+        - 2.0.1
+        - 2.0.2-exp.1
+        - 2.1.0-exp.1
+        - 2.1.0-exp.2
+        - 2.1.1-exp.1
+        - 2.1.1-exp.2
+        - 2.1.1
+        - 2.1.2
+        - 2.1.3-exp.1
+        - 2.1.3-exp.2
+        - 2.1.3-exp.3
+        - 2.1.3-exp.4
+        - 3.0.0-pre.3
+        - 3.0.0-pre.4
+        - 3.0.0-pre.5
+        - 3.0.0-pre.6
+        - 3.0.0-pre.7
+        - 3.0.0-pre.8
+        - 3.0.0-pre.9
+        - 3.0.0-pre.10
+        - 3.0.0-pre.11
+        - 3.0.0-pre.12
+        - 3.0.0-pre.13
+        compatible:
+        - 0.3.0-preview.4
+        - 0.3.1-preview.2
+        - 0.3.2-preview
+        - 1.0.0-preview
+        - 1.0.4-preview.2
+        - 1.0.5-preview
+        - 1.0.6-preview
+        - 1.0.6
+        - 1.0.7-preview
+        - 1.0.8-preview
+        - 1.0.8-preview.1
+        - 1.0.8
+        - 1.0.9-preview
+        - 1.0.9-preview.1
+        - 1.0.9
+        - 1.0.10-preview.1
+        - 1.1.0-preview
+        - 1.1.0-preview.1
+        - 1.1.0-preview.2
+        - 1.1.0-preview.3
+        - 1.1.0-preview.4
+        - 1.2.0-preview
+        - 1.2.0-preview.1
+        - 1.2.0-preview.2
+        - 1.2.0-preview.3
+        - 1.2.0-preview.4
+        - 1.2.0-preview.5
+        - 1.2.1-preview
+        - 1.2.1
+        - 1.2.2-preview.1
+        - 1.2.2
+        - 1.2.3-preview.1
+        - 1.2.3-preview.2
+        - 1.2.3
+        - 1.2.4-preview.2
+        - 1.2.4-preview.3
+        - 1.2.4-preview.4
+        - 1.3.0-preview.1
+        - 1.3.0-preview.2
+        - 1.3.1-preview.1
+        - 1.3.1-preview.2
+        - 1.3.1-preview.3
+        - 1.3.1-preview.4
+        - 1.3.2-preview.1
+        - 1.3.2-preview.2
+        - 1.3.2-preview.3
+        - 1.3.2-preview.4
+        - 1.3.2-preview.5
+        - 1.3.2-preview.6
+        - 1.3.2-preview.7
+        - 1.3.2-preview.8
+        - 1.3.2-preview.9
+        - 1.3.2-preview.10
+        - 1.4.0-preview.1
+        - 1.4.0-preview.2
+        - 1.4.0-preview.3
+        - 1.4.0-preview.4
+        - 1.4.0-preview.5
+        - 1.4.0-preview.6
+        - 1.4.0-preview.7
+        - 1.4.0
+        - 2.0.0-preview.2
+        - 2.0.0
+        - 2.0.1
+        - 2.0.2-exp.1
+        - 2.1.0-exp.1
+        - 2.1.0-exp.2
+        - 2.1.1-exp.1
+        - 2.1.1-exp.2
+        - 2.1.1
+        - 2.1.2
+        - 2.1.3-exp.1
+        - 2.1.3-exp.2
+        - 2.1.3-exp.3
+        - 2.1.3-exp.4
+        - 3.0.0-pre.3
+        - 3.0.0-pre.4
+        - 3.0.0-pre.5
+        - 3.0.0-pre.6
+        - 3.0.0-pre.7
+        - 3.0.0-pre.8
+        - 3.0.0-pre.9
+        - 3.0.0-pre.10
+        - 3.0.0-pre.11
+        - 3.0.0-pre.12
+        - 3.0.0-pre.13
+        verified: 1.4.0
+      dependencies:
+      - name: com.unity.nuget.newtonsoft-json
+        version: 2.0.0
+      resolvedDependencies:
+      - name: com.unity.nuget.newtonsoft-json
+        version: 2.0.0
+      keywords:
+      - remote
+      - config
+      - configuration
+      - settings
+      - remote settings
+      - remote config
+      - firebase
+      - staged rollouts
+      - feature flagging
+      - roll-out
+      - adapt
+      - tune
+      - tailor
+      - test
+      - experiment
+      - experimentation
+      - app update
+      - taget
+      - targeting
+      - segment
+      - segmentation
+      - segmenting
+      - override
+      - rules
+      - variants
+      - variation
+      - parameter
+      - condtions
+      - conditional
+      - continuous delivery
+      - deploy
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637393356210000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: https://github.cds.internal.unity3d.com/unity/com.unity.ai.remote-settings.git
+        revision: 198ff0e9450238010e53c48701f9c52cae9ee426
         path: 
     - packageId: com.unity.render-pipelines.universal@10.6.0
       testable: 0
@@ -1314,14 +1599,16 @@ m_PackageAssets:
         - 1.1.27
         - 1.1.29
         - 1.1.30
+        - 1.1.31
         - 2.0.1-pre.12
         - 2.0.1-pre.18
         compatible:
         - 1.1.29
         - 1.1.30
+        - 1.1.31
         - 2.0.1-pre.12
         - 2.0.1-pre.18
-        verified: 1.1.30
+        verified: 1.1.31
       dependencies:
       - name: com.unity.ext.nunit
         version: 1.0.6
@@ -1461,6 +1748,7 @@ m_PackageAssets:
         - 2.1.6
         - 2.2.0-preview.1
         - 2.2.0-preview.2
+        - 2.2.0-preview.3
         - 3.0.0-preview.1
         - 3.0.0-preview.3
         - 3.0.0-preview.4
@@ -1480,11 +1768,13 @@ m_PackageAssets:
         - 3.0.6
         - 3.2.0-pre.1
         - 3.2.0-pre.2
+        - 3.2.0-pre.3
         - 4.0.0-pre.1
         compatible:
         - 3.0.6
         - 3.2.0-pre.1
         - 3.2.0-pre.2
+        - 3.2.0-pre.3
         verified: 3.0.6
       dependencies:
       - name: com.unity.ugui
@@ -1613,6 +1903,8 @@ m_PackageAssets:
         - 1.6.4
         - 1.7.0-pre.1
         - 1.7.0-pre.2
+        - 1.7.0
+        - 1.7.1
         compatible:
         - 1.4.8
         - 1.5.0-pre.2
@@ -1639,6 +1931,8 @@ m_PackageAssets:
         - 1.6.4
         - 1.7.0-pre.1
         - 1.7.0-pre.2
+        - 1.7.0
+        - 1.7.1
         verified: 1.4.8
       dependencies:
       - name: com.unity.modules.director
@@ -3990,6 +4284,7 @@ m_PackageAssets:
         - 2.0.0
         - 2.0.1-preview.1
         - 2.0.2
+        - 3.0.1
         compatible:
         - 1.0.0-preview.2
         - 1.0.0-preview.3
@@ -4002,6 +4297,7 @@ m_PackageAssets:
         - 2.0.0
         - 2.0.1-preview.1
         - 2.0.2
+        - 3.0.1
         verified: 2.0.2
       dependencies: []
       resolvedDependencies: []
@@ -4057,6 +4353,8 @@ m_PackageAssets:
         - 1.1.0-pre.10
         - 1.1.0-pre.11
         - 1.1.0-pre.41
+        - 1.1.0-pre.69
+        - 1.2.0
         compatible:
         - 1.0.1
         - 1.1.0-pre.7
@@ -4065,6 +4363,8 @@ m_PackageAssets:
         - 1.1.0-pre.10
         - 1.1.0-pre.11
         - 1.1.0-pre.41
+        - 1.1.0-pre.69
+        - 1.2.0
         verified: 1.0.1
       dependencies:
       - name: com.unity.modules.unitywebrequest
@@ -4125,6 +4425,7 @@ m_PackageAssets:
         - 2.0.2
         - 2.1.0
         - 2.1.1
+        - 2.1.2
         - 3.0.0
         - 3.0.1
         - 4.0.0
@@ -4142,8 +4443,10 @@ m_PackageAssets:
         - 6.0.0
         - 6.0.1
         - 6.0.2
+        - 6.0.3
         - 7.0.0-pre.3
         - 7.0.0-pre.4
+        - 7.0.0
         compatible:
         - 4.0.3
         - 4.0.4
@@ -4229,6 +4532,7 @@ m_PackageAssets:
         - 5.0.0-pre.2
         - 5.0.0
         - 5.0.1
+        - 5.0.2
         compatible:
         - 4.0.2
         verified: 4.0.2
@@ -4293,6 +4597,7 @@ m_PackageAssets:
         - 4.6.0-preview
         - 4.7.0-preview
         - 4.9.1
+        - 4.9.2
         compatible:
         - 4.0.0-preview
         - 4.0.0
@@ -4309,6 +4614,7 @@ m_PackageAssets:
         - 4.6.0-preview
         - 4.7.0-preview
         - 4.9.1
+        - 4.9.2
         verified: 4.3.2
       dependencies: []
       resolvedDependencies: []

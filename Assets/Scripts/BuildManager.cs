@@ -1,28 +1,7 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
-
-public struct OneBlock
-{
-
-    public enum BlockType
-    {
-        None,
-        WhiteTurret,
-        OldTurret,
-        GoldMiner,
-        GoldWareHouse,
-        StoneWall,
-        IronWall,
-        ElectroTower,
-        WaterTurret
-    }
-
-    public bool Occupied;
-    public GameObject Block;
-    public BlockType Type;
-}
 
 public class BuildManager : MonoBehaviour
 {
@@ -32,16 +11,14 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private CameraManager cameraMan;
     private static OneBlock[,] _map;
     private Camera _camera;
-    [SerializeField] public GameManage.Tile allowTile;
-    [SerializeField] public OneBlock.BlockType type;
+    [SerializeField] public CONSTANTS.Tile allowTile;
+    [SerializeField] public String type;
     public GameObject texture;
     [SerializeField] private GameObject showing;
     [SerializeField] private Transform effects;
     [SerializeField] private GameObject breakEffect;
     private GameManage gameManage;
     public int size;
-    private static int newId;
-    private static Dictionary<GameObject, int> electroTowers= new Dictionary<GameObject, int>();
 
     public static OneBlock[,] getMap()
     {
@@ -50,23 +27,11 @@ public class BuildManager : MonoBehaviour
     
     private void Awake()
     {
-        mapSize = GameManage.getMapSize();
+        mapSize = CONSTANTS.getMapSize();
         _map = new OneBlock[mapSize.x, mapSize.y];
         gameManage = FindObjectOfType<GameManage>();
     }
 
-    public static int getId(GameObject block)
-    {
-        if (block != null && electroTowers.ContainsKey(block))
-        {
-            return electroTowers[block];
-        }
-
-        newId += 1;
-        
-        return newId;
-    }
-    
     private void Start()
     {
         _camera = Camera.main;
@@ -82,8 +47,8 @@ public class BuildManager : MonoBehaviour
         _map[x2, y2].Occupied = true; //Set Occupied In Base
 
         StartCoroutine(showBlock());
-        newId = 0;
-        Claiming.getInstance().claimZone(new Vector2Int(x2, y2), 20, true, getId(null));
+        CONSTANTS.newId = 0;
+        Claiming.getInstance().claimZone(new Vector2Int(x2, y2), 20, true, CONSTANTS.getId(null));
     }
 
     private IEnumerator showBlock()
@@ -113,7 +78,7 @@ public class BuildManager : MonoBehaviour
                     sprite.color = new Color(255, 255, 255, 0.3f);
                 }
 
-                GameObject iconPrefab = GameManage.GetIcon(type);
+                GameObject iconPrefab = CONSTANTS.GetIcon(type);
 
                 if (iconPrefab != null)
                 {
@@ -156,8 +121,8 @@ public class BuildManager : MonoBehaviour
         {
             prefab = null;
             texture = null;
-            type = OneBlock.BlockType.None;
-            allowTile = GameManage.Tile.All;
+            type = "None";
+            allowTile = CONSTANTS.Tile.All;
         }
         
         var buildPos = _camera.ScreenToWorldPoint(Input.mousePosition); //Get Mouse Position
@@ -172,17 +137,25 @@ public class BuildManager : MonoBehaviour
         OneBlock block = _map[mapPos.x, mapPos.y]; //Get Block
         if (!cameraMan.inventoryOpened)
         {
-            if (Input.GetMouseButton(0) && testClaim(mapPos, GameManage.GetBlockStats(type).claimZone)) //Place Block
+            if (Input.GetMouseButton(0) && testClaim(mapPos, CONSTANTS.GetBS(type).claimZone)) //Place Block
             {
                 if (prefab == null || block.Occupied) return; //If block occupied return
-                if (gameManage.tileMap[mapPos.x, mapPos.y] != allowTile && allowTile != GameManage.Tile.All)
+                if (CONSTANTS.tileMap[mapPos.x, mapPos.y] != allowTile && allowTile != CONSTANTS.Tile.All) 
+                {
+                                        
+                    Debug.Log("{GameLog} => [BuildManager] <color=red>Tile not allowed</color>");
+                    
                     return; //If tile not allowed for build block return
+                }
 
                 block.Type = type;
-                BlockStats blockStats = GameManage.GetBlockStats(block.Type);
+                BlockStats blockStats = CONSTANTS.GetBS(block.Type);
                 if (gameManage.gold < blockStats.gold || gameManage.amethyst < blockStats.amethyst)
                 {
-                    block.Type = OneBlock.BlockType.None;
+                    block.Type = "None";
+                    
+                    Debug.Log("{GameLog} => [BuildManager] <color=red>Not enough gold or amethyst</color>");
+
                     return; //If not enough gold or amethyst return
                 }
 
@@ -198,18 +171,18 @@ public class BuildManager : MonoBehaviour
                 block.Block = inst;
                 block.Type = type;
                 gameManage.blockCount += 1;
-                GameManage.addTypeCount(type, 1);
+                CONSTANTS.addTCount(type, 1);
                 
                 if (blockStats.claimZone != 0)
                 {
-                    Claiming.getInstance().claimZone(mapPos, blockStats.claimZone, true, getId(block.Block));
-                    electroTowers.Add(block.Block, newId);
+                    Claiming.getInstance().claimZone(mapPos, blockStats.claimZone, true, CONSTANTS.getId(block.Block));
+                    CONSTANTS._electroTowers.Add(block.Block, CONSTANTS.newId);
                 }
                 
             }
             if (Input.GetMouseButton(1) && block.Block) //Remove Block
             {
-                BlockStats blockStats = GameManage.GetBlockStats(block.Type);
+                BlockStats blockStats = CONSTANTS.GetBS(block.Type);
 
                 gameManage.maxGold -= blockStats.maxGold;
                 gameManage.gold += Mathf.RoundToInt(blockStats.gold * 0.4f);
@@ -219,14 +192,14 @@ public class BuildManager : MonoBehaviour
 
                 if (blockStats.claimZone != 0)
                 {
-                    Claiming.getInstance().claimZone(mapPos, blockStats.claimZone, false, getId(block.Block));
-                    electroTowers.Remove(block.Block);
+                    Claiming.getInstance().claimZone(mapPos, blockStats.claimZone, false, CONSTANTS.getId(block.Block));
+                    CONSTANTS._electroTowers.Remove(block.Block);
                 }
                 
                 block.Occupied = false;
                 Destroy(block.Block);
                 gameManage.blockCount -= 1;
-                GameManage.addTypeCount(type, -1);
+                CONSTANTS.addTCount(type, -1);
 
                 if (blockStats.color != null)
                 {

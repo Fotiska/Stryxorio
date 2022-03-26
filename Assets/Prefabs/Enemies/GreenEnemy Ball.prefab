@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4772021178221088101}
   - component: {fileID: 1882038937964961099}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: RedEnemy Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,8 +94,8 @@ GameObject:
   - component: {fileID: 6395613991209866151}
   - component: {fileID: 672790471385637571}
   - component: {fileID: 7362620126516924306}
-  - component: {fileID: 7648298573613479543}
-  m_Layer: 6
+  - component: {fileID: 424544609120199805}
+  m_Layer: 7
   m_Name: GreenEnemy Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ MonoBehaviour:
   startHealth: 384
   health: 384
   speed: 3.5
---- !u!114 &7648298573613479543
+--- !u!114 &424544609120199805
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,9 +188,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4684587694688240301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be3cee8b377c0b14d8a0029ca2a3eb78, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c4ec4a271f6fd245bb7578fa0fdfcd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.3
+  speed: 1
   currentAxis: 2
-  invert: 0
+  invert: 1

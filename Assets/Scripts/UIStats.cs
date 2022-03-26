@@ -1,7 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.UI;
 
 public class UIStats : MonoBehaviour
@@ -30,6 +30,12 @@ public class UIStats : MonoBehaviour
             amethyst.text = _gameManage.amethyst + "/" + _gameManage.maxAmethyst;
             health.text = _gameManage.Base.health + "/" + 100;
             blocks.text = _gameManage.blockCount + "/" + _enemySpawner.blocksBoss;
+
+            if (_gameManage.Base.health <= 0)
+            {
+                EventManager.death.Invoke();
+            }
+            
         }
     }
 }

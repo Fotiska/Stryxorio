@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
         Stats blockStats = other.gameObject.GetComponent<Stats>();
         if (!blockStats) return;
         var hp = blockStats.health;
-        health -= hp * 0.2f;
+        health -= hp;
         if (health > 0) blockStats.health -= health;
         if (health < 0) blockStats.health += health;
 
@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
             
             Vector2Int mapPos = new Vector2Int(Mathf.RoundToInt(pos.x - 0.5f), Mathf.RoundToInt(pos.y - 0.5f));
             
-            Claiming.getInstance().claimZone(mapPos, 6, false, BuildManager.getId(other.gameObject));
+            Claiming.getInstance().claimZone(mapPos, 6, false, CONSTANTS.getId(other.gameObject));
             
             Destroy(other.gameObject);
             

@@ -14,7 +14,7 @@ public struct EnemyStruct
 public class EnemySpawner : MonoBehaviour
 {
 
-    private Vector2Int mapSize;
+    private Vector2Int mapSize = CONSTANTS.getMapSize();
     [SerializeField] private float spawnTimer , moveTimer;
     [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private Slider slider;
@@ -26,10 +26,8 @@ public class EnemySpawner : MonoBehaviour
     
     private void Start()
     {
+        gameManage = FindObjectOfType<GameManage>();
         _tr = transform;
-        gameManage = FindObjectOfType<GameManage>(); //Get GameManage
-
-        mapSize = GameManage.getMapSize();
         Random.InitState(PlayerPrefs.GetInt("Seed")); //Set and Get Seed
         StartCoroutine(SpawnEnemies()); //Start Coroutine
         StartCoroutine(MoveEnemies()); //Start Coroutine

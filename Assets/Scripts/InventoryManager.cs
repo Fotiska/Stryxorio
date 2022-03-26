@@ -1,49 +1,45 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-[Serializable]
-public class inventoryItem
-{
-    public GameObject prefab;
-    public GameManage.Tile allowTile;
-    public OneBlock.BlockType type;
-    public GameManage.Category category;
-    public String description;
-    public String name;
-    public openScripts openScriptType;
-
-    public int count;
-    public OneBlock.BlockType blockType;
-}
-
-[Serializable]
-public enum openScripts{
-    None,
-    PlaceBlockScript
-}
 
 public class InventoryManager : MonoBehaviour
 {
+    public static InventoryManager instance;
+    
+    public GameObject modTurretPrefab;
+    public GameObject modBlockPrefab;
+    public String modType;
+    public CONSTANTS.Category modCategory;
+    public String modDescription;
+    public String modName;
+
+    public Transform prefabs;
     public GameObject itemPrefab;
     public Transform[] categories;
     public List<inventoryItem> items;
     public GameObject infoImage;
     public Text infoDesc;
     public Text gold, amethyst;
+
+    public ModLoader modLoader;
     
     public void Awake()
     {
+        instance = this;
+        
+        modLoader.loadModsInventory(this);
+
         foreach (var item in items)
         {
             Transform _transform = item.category switch
             {
-                GameManage.Category.Defenses => categories[0],
-                GameManage.Category.Buildings => categories[1],
-                GameManage.Category.Other => categories[2],
+                CONSTANTS.Category.Defenses => categories[0],
+                CONSTANTS.Category.Buildings => categories[1],
+                CONSTANTS.Category.Other => categories[2],
                 _ => null
             };
             
@@ -57,11 +53,11 @@ public class InventoryManager : MonoBehaviour
             opened.Find("Name").Find("NameText").GetComponent<Text>().text = item.name;
             opened.GetComponentInChildren<Button>().onClick.AddListener( delegate { click(item); });
 
-            if (item.openScriptType != openScripts.None)
+            if (item.openScriptType != CONSTANTS.openScripts.None)
             {
                 switch (item.openScriptType)
                 {
-                    case openScripts.PlaceBlockScript:
+                    case CONSTANTS.openScripts.PlaceBlockScript:
                     {
                         PlaceBlockScript script = itemInst.AddComponent<PlaceBlockScript>();
                         
@@ -87,6 +83,11 @@ public class InventoryManager : MonoBehaviour
         foreach (var collider in gameObj.GetComponentsInChildren<Collider2D>())
         {
             DestroyImmediate(collider, true);
+        }
+        
+        foreach (var rigidBody in gameObj.GetComponentsInChildren<Rigidbody2D>())
+        {
+            DestroyImmediate(rigidBody, true);
         }
         
         foreach (var turret in gameObj.GetComponentsInChildren<Turret>())
@@ -145,7 +146,7 @@ public class InventoryManager : MonoBehaviour
             Destroy(o.gameObject);
         }
 
-        BlockStats bs = GameManage.GetBlockStats(item.type);
+        BlockStats bs = CONSTANTS.GetBS(item.type);
         int goldC = 0, amethystC = 0;
 
         goldC = bs.gold;
@@ -162,6 +163,6 @@ public class InventoryManager : MonoBehaviour
         gold.text = goldC.ToString();
         amethyst.text = amethystC.ToString();
         buildMan.texture = showingCloned;
-        buildMan.size = GameManage.GetBlockStats(item.type).size;
+        buildMan.size = bs.size;
     }
 }

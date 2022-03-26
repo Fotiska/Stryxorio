@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5366880527646743669}
   - component: {fileID: 5776096547995156935}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: RedEnemy MiniBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 6395613991209866151}
   - component: {fileID: 672790471385637571}
   - component: {fileID: 7362620126516924306}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: RedEnemy MiniBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
