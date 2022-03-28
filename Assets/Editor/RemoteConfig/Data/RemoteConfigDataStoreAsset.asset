@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
+  m_Name: RemoteConfigDataStoreAsset
+  m_EditorClassIdentifier: 
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"bbc76fd2-6e5f-4cd7-ad90-74277b69790c\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"CreateGun\",\r\n      \"type\": \"string\",\r\n     
+    \"value\": \"1SE239dS\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"b3ac884b-f130-4dae-b52b-872cb7c13ed7\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"CreateMod\",\r\n      \"type\": \"string\",\r\n      \"value\":
+    \"D7BMNOV\"\r\n    }\r\n  }\r\n]"
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"bbc76fd2-6e5f-4cd7-ad90-74277b69790c\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"CreateGun\",\r\n      \"type\": \"string\",\r\n     
+    \"value\": \"1SE239dS\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"b3ac884b-f130-4dae-b52b-872cb7c13ed7\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"CreateMod\",\r\n      \"type\": \"string\",\r\n      \"value\":
+    \"D7BMNOV\"\r\n    }\r\n  }\r\n]"
+  _environments: "[\r\n  {\r\n    \"projectId\": \"92840797-c912-4e6e-a56e-dd1217293595\",\r\n   
+    \"name\": \"production\",\r\n    \"id\": \"52564373-9fc3-4aa3-acee-f6394e3d8309\",\r\n   
+    \"isDefault\": true,\r\n    \"createdAt\": \"2022-03-20T14:42:54Z\",\r\n    \"updatedAt\":
+    \"2022-03-20T14:42:54Z\"\r\n  }\r\n]"
+  _rulesList: '[]'
+  _lastCachedRulesList: '[]'
